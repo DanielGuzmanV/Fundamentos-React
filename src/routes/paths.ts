@@ -1,5 +1,9 @@
 export const PATHS = {
   HOME: '/',
-  REPASO_BASICO: '/repaso_basico',
   LOGIN: '/login',
+  BASICOS: '/conceptos/basicos',
+  INTERMEDIOS: '/conceptos/intermedios',
+  AVANZADOS: '/conceptos/avanzados',
+  EJEMPLOS: '/ejemplos',
+  PRUEBAS: '/pruebas',
 }
