@@ -1,7 +1,9 @@
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, BookOpen, Layers, TestTube, LogIn, ChevronDown, X } from 'lucide-react';
+import { LogIn, X } from 'lucide-react';
 import { PATHS } from '../../../routes/paths';
+import { MENU_ITEMS } from "../../../routes/navigation";
+import { NavItem } from "./NavItem";
+import { SubMenuItem } from "./SubMemuItem";
 
 interface Props {
   isOpen: boolean;
@@ -9,17 +11,10 @@ interface Props {
 }
 
 export const SidebarCustom = ({isOpen, onClose}: Props) => {
-  const [isConceptOpen, setIsConceptOpen] = useState(true);
   const location = useLocation();
 
-  const isActive = (path: string) => 
+  const getActiveClass = (path: string) => 
     location.pathname === path ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100';
-
-  const pathsConcept = [
-    {title: 'Básicos', path: PATHS.BASICOS},
-    {title: 'Intermedios', path: PATHS.INTERMEDIOS},
-    {title: 'Avanzados', path: PATHS.AVANZADOS},
-  ]
 
   return (
     <aside className={`
@@ -42,59 +37,29 @@ export const SidebarCustom = ({isOpen, onClose}: Props) => {
 
         {/* Navegacion de links*/}
         <nav className="flex-1 px-4 space-y-2 overflow-y-auto">
-          <p className="px-3 mt-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Principal</p>
-          <Link 
-            to={PATHS.HOME} 
-            onClick={onClose}
-            className={`flex items-center gap-3 p-3 rounded-lg font-medium transition-colors ${isActive(PATHS.HOME)}`}
-          >
-            <LayoutDashboard size={20} />
-            <span>Inicio</span>
-          </Link>
+          <p className="px-3 mt-4 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Menú</p>
+          
+          {MENU_ITEMS.map((items) => {
+            if(items.isSubmenu) {
+              return (
+                <SubMenuItem
+                  key={items.name}
+                  item={items}
+                  onClose={onClose}
+                  getActiveClass={getActiveClass}
+                />
+              );
+            }
 
-          {/* Despliegue de conceptos */}
-          <div>
-            <button 
-              onClick={() => setIsConceptOpen(!isConceptOpen)}
-              className="w-full flex items-center justify-between p-3 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <BookOpen size={20} />
-                <span>Conceptos</span>
-              </div>
-              <ChevronDown size={16} className={`transition-transform ${isConceptOpen ? 'rotate-180': ''}`} />
-            </button>
-
-            {isConceptOpen && (
-              <div className="ml-9 mt-1 flex flex-col border-l border-gray-100">
-                {pathsConcept.map((ruta, idx) => (
-                  <Link
-                    key={idx}
-                    to={ruta.path} onClick={onClose} 
-                    className={`p-2 mb-2 pl-4 text-sm rounded-lg ${isActive(ruta.path)}`}
-                  >
-                    {ruta.title}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        
-          <p className="px-3 mt-6 mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Recursos</p>
-          <Link 
-            to={PATHS.EJEMPLOS} onClick={onClose} 
-            className={`flex items-center gap-3 p-3 rounded-lg font-medium transition-colors ${isActive(PATHS.EJEMPLOS)}`}
-          >
-            <Layers size={20} />
-            <span>Ejemplos</span>
-          </Link>
-          <Link 
-            to={PATHS.PRUEBAS} onClick={onClose} 
-            className={`flex items-center gap-3 p-3 rounded-lg font-medium transition-colors ${isActive(PATHS.PRUEBAS)}`}
-          >
-            <TestTube size={20} />
-            <span>Pruebas</span>
-          </Link>
+            return (
+              <NavItem
+                key={items.href}
+                item={items}
+                isActive={location.pathname === items.href}
+                onClick={onClose}
+              />
+            )
+          })}
         </nav>
 
         {/* Footer SideBar */}
