@@ -28,8 +28,8 @@ export const MENU_ITEMS: DataMenu[] = [
     icon: BookOpen,
     isSubmenu: true,
     children: [
-      { name: 'Demo 1', href: PATHS.DEMO_1 },
-      { name: 'Demo 2', href: PATHS.DEMO_2 },
+      { name: 'CryptoPulse', href: PATHS.DEMO_1 },
+      { name: 'JobMatch', href: PATHS.DEMO_2 },
     ]
   },
   { 

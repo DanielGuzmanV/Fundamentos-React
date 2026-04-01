@@ -4,11 +4,13 @@ import { PATHS } from "./paths";
 
 // Importaciones de las paginas
 import { HomePage } from "../pages/Home/HomePage";
-import { BasicConceptsPage } from "../pages/BasicConcepts/BasicConceptsPage";
-import { IntermediateConceptsPage } from "../pages/IntermediateConcepts/IntermediateConceptsPage";
+import { PresentationCrypto } from "../pages/Demo-Crypto/PresentationCrypto";
+import { PresentationJob } from "../pages/Demo-JobMatch/PresentationJob";
 import { SettingsPage } from "../pages/Settings/OptionsPage";
 import { LoginPage } from "../pages/Login/LoginPage";
 import { ProjectOnePage } from "../pages/ProjectOne/ProjectOnePage";
+import { CryptoApp } from "../pages/Demo-Crypto/CryptoApp";
+import { JobApp } from "../pages/Demo-JobMatch/JobApp";
 
 export const router = createBrowserRouter([
   {
@@ -19,8 +21,8 @@ export const router = createBrowserRouter([
     children: [
       {index: true, element: <HomePage/>},
       {path: PATHS.PROJECT_ONE, element: <ProjectOnePage/>},
-      {path: PATHS.DEMO_1, element: <BasicConceptsPage/>},
-      {path: PATHS.DEMO_2, element: <IntermediateConceptsPage/>},
+      {path: PATHS.DEMO_1, element: <PresentationCrypto/>},
+      {path: PATHS.DEMO_2, element: <PresentationJob/>},
       {path: PATHS.SETTINGS, element: <SettingsPage/>},
 
     ]
@@ -29,9 +31,20 @@ export const router = createBrowserRouter([
   {
     // Rutas fuera del layout
     path: PATHS.LOGIN,
-    element: <LoginPage/>
+    element: <LoginPage/>,
   },
 
+  // --- Pantallas completas para las demos ---
+  {
+    path: PATHS.CRYPTO_APP,
+    element: <CryptoApp/>
+  },
+  {
+    path: PATHS.JOB_MATCH_APP,
+    element: <JobApp/>
+  },
+
+  // ----------------------
   {
     // Comodin para rutas no encontradas que estan fuera del layout
     path: "*",
