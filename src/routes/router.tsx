@@ -6,10 +6,9 @@ import { PATHS } from "./paths";
 import { HomePage } from "../pages/Home/HomePage";
 import { BasicConceptsPage } from "../pages/BasicConcepts/BasicConceptsPage";
 import { IntermediateConceptsPage } from "../pages/IntermediateConcepts/IntermediateConceptsPage";
-import { AdvancedConceptsPage } from "../pages/AdvancedConcepts/AdvancedConceptsPage";
-import { ExamplesPage } from "../pages/Examples/ExamplesPage";
-import { PruebasPage } from "../pages/Pruebas/PruebasPage";
+import { SettingsPage } from "../pages/Settings/OptionsPage";
 import { LoginPage } from "../pages/Login/LoginPage";
+import { ProjectOnePage } from "../pages/ProjectOne/ProjectOnePage";
 
 export const router = createBrowserRouter([
   {
@@ -19,11 +18,10 @@ export const router = createBrowserRouter([
     errorElement: <div>404 - Pagina no encontrada</div>,
     children: [
       {index: true, element: <HomePage/>},
-      {path: PATHS.BASICOS, element: <BasicConceptsPage/>},
-      {path: PATHS.INTERMEDIOS, element: <IntermediateConceptsPage/>},
-      {path: PATHS.AVANZADOS, element: <AdvancedConceptsPage/>},
-      {path: PATHS.EJEMPLOS, element: <ExamplesPage/>},
-      {path: PATHS.PRUEBAS, element: <PruebasPage/>},
+      {path: PATHS.PROJECT_ONE, element: <ProjectOnePage/>},
+      {path: PATHS.DEMO_1, element: <BasicConceptsPage/>},
+      {path: PATHS.DEMO_2, element: <IntermediateConceptsPage/>},
+      {path: PATHS.SETTINGS, element: <SettingsPage/>},
 
     ]
   },
