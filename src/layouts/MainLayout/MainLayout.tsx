@@ -2,9 +2,12 @@ import {useState} from 'react';
 import { Outlet } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { SidebarCustom } from './components/SidebarCustom';
+import { useActiveTitle } from '../../hooks/useActiveTitle';
 
 export const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const activeTitle = useActiveTitle();
 
   return (
     <div className="flex h-screen w-full bg-gray-100 overflow-hidden text-slate-900">
@@ -15,10 +18,11 @@ export const MainLayout = () => {
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Header móvil superior */}
-        <header className="lg:hidden flex items-center justify-between p-2 bg-white border-b border-gray-200">
+        <header className="lg:hidden flex items-center gap-2 p-2 bg-white border-b border-gray-200">
           <button onClick={() => setIsSidebarOpen(true)} className="p-2 text-gray-600">
             <Menu size={24} />
           </button>
+          <span className='font-bold text-lg'>{activeTitle}</span>
         </header>
 
         {/* Contenido principal */}
