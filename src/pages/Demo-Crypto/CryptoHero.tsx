@@ -14,7 +14,7 @@ export const CryptoHero = () => {
 
       {/* Nota sobre la navegación */}
       <div className="bg-slate-900 rounded-3xl p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="space-y-2">
+        <div className="space-y-2 text-center md:text-left">
           <h2 className="text-2xl font-bold">¿Listo para explorar la Demo?</h2>
           <p className="text-slate-400">
             La aplicación abrirá un entorno dedicado con su propia navegación horizontal y herramientas específicas de trading.
