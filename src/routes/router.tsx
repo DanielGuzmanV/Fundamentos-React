@@ -4,7 +4,7 @@ import { PATHS } from "./paths";
 
 // Importaciones de las paginas
 import { HomePage } from "../pages/Home/HomePage";
-import { PresentationCrypto } from "../pages/Demo-Crypto/PresentationCrypto";
+import { CryptoHero } from "../pages/Demo-Crypto/CryptoHero";
 import { PresentationJob } from "../pages/Demo-JobMatch/PresentationJob";
 import { SettingsPage } from "../pages/Settings/OptionsPage";
 import { LoginPage } from "../pages/Login/LoginPage";
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     children: [
       {index: true, element: <HomePage/>},
       {path: PATHS.PROJECT_ONE, element: <ProjectOnePage/>},
-      {path: PATHS.DEMO_1, element: <PresentationCrypto/>},
+      {path: PATHS.DEMO_1, element: <CryptoHero/>},
       {path: PATHS.DEMO_2, element: <PresentationJob/>},
       {path: PATHS.SETTINGS, element: <SettingsPage/>},
 
