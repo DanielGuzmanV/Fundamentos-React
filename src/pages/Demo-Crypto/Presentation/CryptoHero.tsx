@@ -1,7 +1,7 @@
 import { PATHS } from "../../../routes/paths";
 import { HeaderHero } from "../../../features/demo-crypto/Hero/components/HeaderHero";
 import { GridCardsHero } from "../../../features/demo-crypto/Hero/components/GridCardsHero";
-import { ButtonPages } from "../../../components/ButtonPages";
+import { ButtonPages } from "../../../components/ui/ButtonPages";
 
 export const CryptoHero = () => {
   return (

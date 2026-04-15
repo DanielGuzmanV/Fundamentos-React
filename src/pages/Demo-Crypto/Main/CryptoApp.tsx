@@ -1,4 +1,4 @@
-import { ButtonPages } from "../../../components/ButtonPages"
+import { ButtonPages } from "../../../components/ui/ButtonPages"
 import { PATHS } from "../../../routes/paths"
 
 export const CryptoApp = () => {

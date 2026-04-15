@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { Outlet } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-import { SidebarCustom } from './components/SidebarCustom';
+import { SidebarCustom } from '../../components/layout/main-layout/SidebarCustom';
 import { useActiveTitle } from '../../hooks/useActiveTitle';
 
 export const MainLayout = () => {
