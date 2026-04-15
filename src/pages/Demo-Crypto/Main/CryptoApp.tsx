@@ -1,5 +1,5 @@
-import { ButtonPages } from "../../components/ButtonPages"
-import { PATHS } from "../../routes/paths"
+import { ButtonPages } from "../../../components/ButtonPages"
+import { PATHS } from "../../../routes/paths"
 
 export const CryptoApp = () => {
   return (

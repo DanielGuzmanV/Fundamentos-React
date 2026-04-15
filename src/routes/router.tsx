@@ -4,13 +4,13 @@ import { PATHS } from "./paths";
 
 // Importaciones de las paginas
 import { HomePage } from "../pages/Home/HomePage";
-import { CryptoHero } from "../pages/Demo-Crypto/CryptoHero";
-import { PresentationJob } from "../pages/Demo-JobMatch/PresentationJob";
+import { CryptoHero } from "../pages/Demo-Crypto/Presentation/CryptoHero";
+import { PresentationJob } from "../pages/Demo-JobMatch/Presentation/PresentationJob";
 import { SettingsPage } from "../pages/Settings/OptionsPage";
 import { LoginPage } from "../pages/Login/LoginPage";
 import { ProjectOnePage } from "../pages/ProjectOne/ProjectOnePage";
-import { CryptoApp } from "../pages/Demo-Crypto/CryptoApp";
-import { JobApp } from "../pages/Demo-JobMatch/JobApp";
+import { CryptoApp } from "../pages/Demo-Crypto/Main/CryptoApp";
+import { JobApp } from "../pages/Demo-JobMatch/Main/JobApp";
 
 export const router = createBrowserRouter([
   {
