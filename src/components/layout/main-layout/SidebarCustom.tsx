@@ -20,7 +20,7 @@ export const SidebarCustom = ({isOpen, onClose}: Props) => {
     <aside className={`
       fixed inset-y-0 left-0 z-50 w-60 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out
       ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-      lg:relative lg:translate-x-0
+      sm:relative sm:translate-x-0
     `}>
       <div className='flex flex-col h-full'>
         {/* Header Sidebar */}
@@ -30,7 +30,7 @@ export const SidebarCustom = ({isOpen, onClose}: Props) => {
             <span>React Master</span>
           </div>
           {/* Botón cerrar móvil */}
-          <button className="lg:hidden p-2 text-gray-500" onClick={onClose}>
+          <button className="sm:hidden p-2 text-gray-500" onClick={onClose}>
             <X size={24} />
           </button>
         </div>
