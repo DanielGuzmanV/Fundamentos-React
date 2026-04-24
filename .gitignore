@@ -25,3 +25,6 @@ dist-ssr
 
 # Fundamentos de react
 fundamentos-react.txt
+
+# API key coincap
+.env
