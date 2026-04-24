@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { PATHS } from '../../../routes/paths';
-import { LayoutDashboard, BarChart2, Briefcase } from 'lucide-react';
+import { CRYPTO_NAV_LINKS } from '../../../features/demo-crypto/crypto-app/constants/navigation';
 
 interface Props {
   onLinkClick?: () => void; // Para cerrar el menú móvil al hacer click
@@ -23,15 +22,9 @@ export const NavbarLinks = ({ onLinkClick, isMobile = false }: Props) => {
     `;
   };
 
-  const links = [
-    { label: 'Dashboard', path: PATHS.CRYPTO_APP, icon: LayoutDashboard },
-    { label: 'Mercados', path: PATHS.CRYPTO_MARKETS, icon: BarChart2 },
-    { label: 'Portafolio', path: PATHS.CRYPTO_PORTFOLIO, icon: Briefcase },
-  ];
-
   return (
     <>
-      {links.map((link) => (
+      {CRYPTO_NAV_LINKS.map((link) => (
         <NavLink
           key={link.path}
           to={link.path}
