@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import type { Coin } from "../types/crypto"
 import { getAssetsCoins } from "../services/assetsApi";
 
-export const useCrypto = () => {
+export const useAssets = () => {
   const [coins, setCoins] = useState<Coin[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
