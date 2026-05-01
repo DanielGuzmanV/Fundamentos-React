@@ -1,6 +1,18 @@
-export const CryptoMarketsPage = () => (
-  <div className="py-10 text-center">
-    <h1 className="text-3xl font-bold text-slate-800">Panel de Mercados</h1>
-    <p className="text-slate-500 mt-2">Próximamente: Lista de 500+ monedas con useMemo.</p>
-  </div>
-);
+import { useCrypto } from "../../../features/demo-crypto/crypto-app/hooks/useCrypto";
+
+export const CryptoMarketsPage = () => {
+  const { coins, isLoading, error } = useCrypto();
+
+  if (isLoading) return <div>Cargando mercado...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <ul>
+      {coins.map(coin => (
+        <li key={coin.id}>
+          {coin.rank} = {coin.name}: ${Number(coin.priceUsd).toFixed(2)}
+        </li>
+      ))}
+    </ul>
+  );
+};
