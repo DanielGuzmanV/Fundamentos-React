@@ -1,3 +1,4 @@
+// Interface para la data de la lista de monedas
 export interface Coin {
   id: string;
   rank: string;
@@ -9,7 +10,15 @@ export interface Coin {
   volumeUsd24Hr: string;
 }
 
+// Respuesta para la data de la lista de monedas
 export interface CoinCapResponse {
   timestamp: number;
   data: Coin[];
+}
+
+// Interface para los datos historicos
+export interface HistoryData {
+  priceUsd: string;
+  time: number;
+  date: string;
 }
