@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import type { Coin } from "../types/crypto"
-import { getCoins } from "../services/cryptoApi";
+import { getAssetsCoins } from "../services/assetsApi";
 
 export const useCrypto = () => {
   const [coins, setCoins] = useState<Coin[]>([]);
@@ -11,7 +11,7 @@ export const useCrypto = () => {
     const fetchCoins = async () => {
       try {
         setIsLoading(true);
-        const data = await getCoins();
+        const data = await getAssetsCoins();
         setCoins(data);
 
       } catch (err) {
