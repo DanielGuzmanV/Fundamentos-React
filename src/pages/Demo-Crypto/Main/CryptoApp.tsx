@@ -1,13 +1,13 @@
 import { useSearchParams } from "react-router-dom"
-import { useAssets } from "../../../features/demo-crypto/crypto-app/hooks/useAssets";
 import { useState } from "react";
-import { useCoinHistory } from "../../../features/demo-crypto/crypto-app/hooks/useCoinHistory";
 import { LoadingPageCustom } from "../../../features/demo-crypto/crypto-app/components/LoadingPageCustom";
 import { MarketStatistics } from "../../../features/demo-crypto/crypto-app/components/MarketStatistics";
 import { MainChartCoin } from "../../../features/demo-crypto/crypto-app/components/MainChartCoin";
 import { FeaturedCoins } from "../../../features/demo-crypto/crypto-app/components/FeaturedCoins";
 import { useFilteredAssets } from "../../../features/demo-crypto/crypto-app/hooks/useFilteredAssets";
 import { useScrollToElement } from "../../../features/demo-crypto/crypto-app/hooks/useScrollToElement";
+import { useCoinHistory } from "../../../features/demo-crypto/crypto-app/hooks/useCoinHistory";
+import { useAssets } from "../../../features/demo-crypto/crypto-app/hooks/useAssets";
 
 export const CryptoApp = () => {
   // Parametros de busqueda:
@@ -53,13 +53,14 @@ export const CryptoApp = () => {
       {/* Seccion 2: Grafico principal de una moneda */}
       <section 
         id="main-chart-section" 
-        className="bg-white p-6 rounded-xl shadow border border-slate-200 scroll-mt-14"
+        className="bg-white p-4 rounded-xl shadow border border-slate-200 scroll-mt-14"
       >
         <MainChartCoin
           selectedCoinId={selectedCoinId}
           isLoadingHistory={isLoadingHistory}
           errorHistory={errorHistory}
           history={history}
+          setGraphInterval={setGraphInterval}
         />
       </section>
 
