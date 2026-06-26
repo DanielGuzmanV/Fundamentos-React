@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import type { DataMenu } from "../../../routes/navigation";
+import { getSidebarLinkClasses } from "./utils/sidebarLinkStyles";
 
 interface NavItemProps {
   item: DataMenu;
-  isActive: boolean;
-  onClick: ()=> void;
+  onClose: ()=> void;
 }
 
-export const NavItem = ({item, isActive, onClick}: NavItemProps) => {
+export const NavItem = ({item, onClose}: NavItemProps) => {
   const  Icon = item.icon;
+  const location = useLocation();
+
+  const isActive = location.pathname === item.href;
 
   return(
     <Link
       to={item.href || "#"}
-      onClick={onClick}
-      className={`flex items-center gap-3 p-3 rounded-lg font-medium transition-colors ${
-        isActive ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100'
-      }`}
+      onClick={onClose}
+      className={getSidebarLinkClasses(isActive)}
     >
       <Icon size={20}/>
       <span>{item.name}</span>
