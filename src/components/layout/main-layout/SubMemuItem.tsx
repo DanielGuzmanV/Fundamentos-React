@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronDown } from 'lucide-react';
 import type { DataMenu } from "../../../routes/navigation";
+import { getSidebarLinkClasses } from "./utils/sidebarLinkStyles";
 
 interface SubMenuItemProps {
   item: DataMenu;
   onClose: () => void;
-  getActiveClass: (path: string) => string;
 }
 
-export const SubMenuItem = ({ item, onClose, getActiveClass }: SubMenuItemProps) => {
+export const SubMenuItem = ({ item, onClose }: SubMenuItemProps) => {
   const [isOpen, setIsOpen] = useState(true);
+  const location = useLocation();
 
   // Validación: Si no hay children, no renderizar nada
   if (!item.children || item.children.length === 0) {
@@ -20,7 +21,7 @@ export const SubMenuItem = ({ item, onClose, getActiveClass }: SubMenuItemProps)
   const Icon = item.icon;
 
   return (
-    <div key={item.name}>
+    <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-3 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors"
@@ -34,18 +35,22 @@ export const SubMenuItem = ({ item, onClose, getActiveClass }: SubMenuItemProps)
       </button>
 
       {isOpen && (
-        <div className="ml-9 mt-1 flex flex-col border-l border-gray-100">
-          {item.children.map((sub) => (
-            <Link
-              key={sub.href}
-              to={sub.href}
-              onClick={onClose}
-              className={`p-2 mb-2 pl-4 text-sm rounded-lg ${getActiveClass(sub.href)}`}
-              aria-current={getActiveClass(sub.href).includes('bg-indigo-50') ? 'page' : undefined} // Accesibilidad
-            >
-              {sub.name}
-            </Link>
-          ))}
+        <div className="ml-9 flex flex-col border-l border-gray-100">
+          {item.children.map((sub) => {
+            const isActiveChild = location.pathname === sub.href;
+          
+            return (
+              <Link
+                key={sub.href}
+                to={sub.href}
+                onClick={onClose}
+                className={`mb-2 pl-4 text-sm rounded-lg ${getSidebarLinkClasses(isActiveChild)}`}
+                aria-current={isActiveChild ? 'page' : undefined} // Accesibilidad
+              >
+                {sub.name}
+              </Link>
+            )
+          })}
         </div>
       )}
     </div>
