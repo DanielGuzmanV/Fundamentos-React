@@ -3,16 +3,21 @@ import { Outlet } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { SidebarCustom } from '../../components/layout/main-layout/SidebarCustom';
 import { useActiveTitle } from '../../hooks/useActiveTitle';
+import { PageHeader } from '../../components/layout/main-layout/PageHeader';
 
 export const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Hook para mostrar el titulo en el header de movil
   const activeTitle = useActiveTitle();
 
   return (
     <div className="flex h-screen w-full bg-gray-100 overflow-hidden text-slate-900">
       {/* SIDEBAR */}
-      <SidebarCustom isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)}/>
+      <SidebarCustom 
+        isSiberbarOpen={isSidebarOpen} 
+        setIsSiberbarOpen={() => setIsSidebarOpen(false)}
+      />
 
       {/* CONTENIDO PRINCIPAL */}
       <div className="flex-1 flex flex-col min-w-0">
@@ -25,7 +30,13 @@ export const MainLayout = () => {
           <span className='font-bold text-lg'>{activeTitle}</span>
         </header>
 
+        {/* Header para la versio pc */}
+        <div className='hidden sm:block sticky top-0 z-10 bg-gray-50 px-3 lg:px-6'>
+          <PageHeader title={activeTitle}/>
+        </div>
+        
         {/* Contenido principal */}
+
         <main className="flex-1 overflow-y-auto bg-gray-50 p-4 lg:p-8">
           <div className="max-w-6xl mx-auto">
             <Outlet />
