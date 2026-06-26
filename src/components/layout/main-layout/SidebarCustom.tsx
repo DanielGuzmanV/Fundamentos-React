@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LogIn, X } from 'lucide-react';
 import { PATHS } from '../../../routes/paths';
 import { MENU_ITEMS } from "../../../routes/navigation";
@@ -6,20 +6,23 @@ import { NavItem } from "./NavItem";
 import { SubMenuItem } from "./SubMemuItem";
 
 interface Props {
-  isOpen: boolean;
-  onClose: ()=> void;
+  isSiberbarOpen: boolean;
+  setIsSiberbarOpen: ()=> void;
 }
 
-export const SidebarCustom = ({isOpen, onClose}: Props) => {
-  const location = useLocation();
+export const SidebarCustom = ({isSiberbarOpen, setIsSiberbarOpen}: Props) => {
 
-  const getActiveClass = (path: string) => 
-    location.pathname === path ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-100';
+  // Funcion para cerra el sidebar solo si esta abierto
+  const handleNavLinkClick = () => {
+    if(isSiberbarOpen) {
+      setIsSiberbarOpen();
+    }
+  };
 
   return (
     <aside className={`
-      fixed inset-y-0 left-0 z-50 w-60 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out
-      ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+      fixed inset-y-0 left-0 z-50 w-65 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out
+      ${isSiberbarOpen ? 'translate-x-0' : '-translate-x-full'}
       sm:relative sm:translate-x-0
     `}>
       <div className='flex flex-col h-full'>
@@ -30,7 +33,7 @@ export const SidebarCustom = ({isOpen, onClose}: Props) => {
             <span>React Master</span>
           </div>
           {/* Botón cerrar móvil */}
-          <button className="sm:hidden p-2 text-gray-500" onClick={onClose}>
+          <button className="sm:hidden p-2 text-gray-500" onClick={setIsSiberbarOpen}>
             <X size={24} />
           </button>
         </div>
@@ -45,8 +48,7 @@ export const SidebarCustom = ({isOpen, onClose}: Props) => {
                 <SubMenuItem
                   key={items.name}
                   item={items}
-                  onClose={onClose}
-                  getActiveClass={getActiveClass}
+                  onClose={handleNavLinkClick}
                 />
               );
             }
@@ -55,8 +57,7 @@ export const SidebarCustom = ({isOpen, onClose}: Props) => {
               <NavItem
                 key={items.href}
                 item={items}
-                isActive={location.pathname === items.href}
-                onClick={onClose}
+                onClose={handleNavLinkClick}
               />
             )
           })}
