@@ -19,6 +19,7 @@ export const CryptoApp = () => {
   const [selectedCoinId, setSelectedCoinId] = useState('bitcoin');
   const [graphInterval, setGraphInterval] = useState('d1');
 
+  // --- Hooks customs ---
   // hook para obtener la lista de monedas
   const {coins, isLoading, error} = useAssets();
 
@@ -30,6 +31,7 @@ export const CryptoApp = () => {
 
   // hook para el scroll
   const scrollToChart = useScrollToElement('main-chart-section');
+  // ---------------------
 
   // función que selecciona la moneda Y hace scroll
   const handleSelectCoinAndScroll = (coinId: string) => {

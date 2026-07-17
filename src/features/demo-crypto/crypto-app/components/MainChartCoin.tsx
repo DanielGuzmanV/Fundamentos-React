@@ -43,17 +43,17 @@ export const MainChartCoin = ({
         {setGraphInterval && (
           <div className="flex gap-2 text-sm font-normal">
             <button 
+              onClick={() => setGraphInterval('m30')} 
+              className="px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+            >30-Min</button>
+            <button 
               onClick={() => setGraphInterval('h1')} 
               className="px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
-            >1H</button>
+            >1-Hora</button>
             <button 
               onClick={() => setGraphInterval('d1')} 
               className="px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
-            >1D</button>
-            <button 
-              onClick={() => setGraphInterval('m1')} 
-              className="px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
-            >1M</button>
+            >1-Dia</button>
             {/* Puedes añadir más intervalos como 'm1', 'y1' */}
           </div>
         )}
