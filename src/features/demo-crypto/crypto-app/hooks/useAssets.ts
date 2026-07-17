@@ -1,29 +1,14 @@
-import { useEffect, useState } from "react"
-import type { Coin } from "../types/crypto"
 import { getAssetsCoins } from "../services/assetsApi";
+import { useQuery } from "@tanstack/react-query";
 
 export const useAssets = () => {
-  const [coins, setCoins] = useState<Coin[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const {data: coins, isLoading, error } = useQuery({
+    queryKey: ['assets'], // Llave unica para esta consulta
+    queryFn: () => getAssetsCoins(),
+    staleTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: false
+  });
 
-  useEffect(() => {
-    const fetchCoins = async () => {
-      try {
-        setIsLoading(true);
-        const data = await getAssetsCoins();
-        setCoins(data);
-
-      } catch (err) {
-        setError("No se han podido cargar las monedas");
-        console.error("Error:", err)
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCoins();
-  }, []);
-
-  return {coins, isLoading, error}
+  return {
+    coins: coins || [], isLoading, error: error?.message || null};
 }
