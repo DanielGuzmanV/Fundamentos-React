@@ -4,6 +4,9 @@ export interface Coin {
   rank: string;
   symbol: string;
   name: string;
+  supply: string;
+  maxSupply: string | null;
+  vwap24Hr: string | null;
   priceUsd: string;
   changePercent24Hr: string;
   marketCapUsd: string;
@@ -21,4 +24,11 @@ export interface HistoryData {
   priceUsd: string;
   time: number;
   date: string;
+}
+
+// Nuevo tipo para las estadísticas globales
+export interface GlobalMarketStats {
+  totalMarketCapUsd: string;
+  totalVolumeUsd24Hr: string;
+  bitcoinDominance: string;
 }
