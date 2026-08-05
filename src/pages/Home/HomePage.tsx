@@ -20,7 +20,7 @@ export function HomePage () {
         <HeroSection totalConcepts={totalConcepts}/>
 
         {/* GRID DE NIVELES (CARDS) */}
-        <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {CONCEPT_LEVELS_DATA.map((level) => (
             <ConceptCard
               key={level.id}
