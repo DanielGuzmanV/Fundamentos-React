@@ -37,7 +37,7 @@ export const MainLayout = () => {
         
         {/* Contenido principal */}
 
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-gray-50">
           <div className="max-w-6xl mx-auto">
             <Outlet />
           </div>
