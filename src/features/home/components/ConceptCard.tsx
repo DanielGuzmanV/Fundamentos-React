@@ -14,7 +14,7 @@ export const ConceptCard = ({ levelData, onSelect }: ConceptCardProps) => {
   return (
     <div
       onClick={() => onSelect?.(levelData.id)}
-      className={`group relative flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer ${styles.borderHover}`}
+      className={`group relative flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-6 cursor-pointer ${styles.borderHover}`}
     >
       <div>
         {/* Header de la Card: Icono + Badge */}
