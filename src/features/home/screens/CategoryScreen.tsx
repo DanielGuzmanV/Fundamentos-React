@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { CONCEPT_LEVELS_DATA } from "../data/concepts.data";
+import { NotFoundBase } from "../../../pages/NotFoundBase";
 
 export const CategoryScreen = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -14,16 +15,10 @@ export const CategoryScreen = () => {
   // Fallback si la ruta no existe
   if (!categoryData) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-slate-950 text-slate-100">
-        <h2 className="mb-2 text-2xl font-bold">Categoría no encontrada</h2>
-        <p className="mb-6 text-slate-400">La categoría especificada no existe.</p>
-        <button
-          onClick={() => navigate("/")}
-          className="rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white transition-colors hover:bg-indigo-500"
-        >
-          Volver al Inicio
-        </button>
-      </div>
+      <NotFoundBase
+        title="Categoría no encontrada"
+        message="La categoría especificada no existe."
+      />
     );
   }
 
