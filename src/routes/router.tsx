@@ -14,6 +14,7 @@ import { JobApp } from "../pages/Demo-JobMatch/Main/JobApp";
 import { CryptoLayout } from "../layouts/CryptoLayout/CryptoLayout";
 import { CryptoMarketsPage } from "../pages/Demo-Crypto/Main/CryptoMarketsPage";
 import { CryptoPortfolioPage } from "../pages/Demo-Crypto/Main/CryptoPortfolioPage";
+import { CategoryPage } from "../pages/Home/CategoryPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,11 +24,12 @@ export const router = createBrowserRouter([
     errorElement: <div>404 - Pagina no encontrada</div>,
     children: [
       {index: true, element: <HomePage/>},
+      {path: PATHS.HOME_CATEGORY, element: <CategoryPage/>},
+      
       {path: PATHS.PROJECT_ONE, element: <ProjectOnePage/>},
       {path: PATHS.DEMO_1, element: <CryptoHero/>},
       {path: PATHS.DEMO_2, element: <PresentationJob/>},
       {path: PATHS.SETTINGS, element: <SettingsPage/>},
-
     ]
   },
 

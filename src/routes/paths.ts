@@ -15,4 +15,7 @@ export const PATHS = {
   
   JOB_MATCH_APP: '/app/job-match',
 
+  // Ruta de aprendizaje (dentro de MainLayout)
+  HOME_CATEGORY: '/learning/:categoryId'
+
 }
