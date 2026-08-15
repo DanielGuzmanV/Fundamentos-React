@@ -15,6 +15,7 @@ import { CryptoLayout } from "../layouts/CryptoLayout/CryptoLayout";
 import { CryptoMarketsPage } from "../pages/Demo-Crypto/Main/CryptoMarketsPage";
 import { CryptoPortfolioPage } from "../pages/Demo-Crypto/Main/CryptoPortfolioPage";
 import { CategoryPage } from "../pages/Home/CategoryPage";
+import { TopicDetailPage } from "../pages/Home/TopicDetailPage";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
     children: [
       {index: true, element: <HomePage/>},
       {path: PATHS.HOME_CATEGORY, element: <CategoryPage/>},
+      {path: PATHS.HOME_TOPIC, element: <TopicDetailPage/>},
       
       {path: PATHS.PROJECT_ONE, element: <ProjectOnePage/>},
       {path: PATHS.DEMO_1, element: <CryptoHero/>},
