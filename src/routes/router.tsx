@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout/MainLayout";
 import { PATHS } from "./paths";
 
@@ -16,13 +16,14 @@ import { CryptoMarketsPage } from "../pages/Demo-Crypto/Main/CryptoMarketsPage";
 import { CryptoPortfolioPage } from "../pages/Demo-Crypto/Main/CryptoPortfolioPage";
 import { CategoryPage } from "../pages/Home/CategoryPage";
 import { TopicDetailPage } from "../pages/Home/TopicDetailPage";
+import { NotFoundBase } from "../pages/NotFoundBase";
 
 export const router = createBrowserRouter([
   {
     // Grupo con el layout principal
     path: '/',
     element: <MainLayout/>,
-    errorElement: <div>404 - Pagina no encontrada</div>,
+    errorElement: <NotFoundBase/>,
     children: [
       {index: true, element: <HomePage/>},
       {path: PATHS.HOME_CATEGORY, element: <CategoryPage/>},
@@ -60,6 +61,6 @@ export const router = createBrowserRouter([
   {
     // Comodin para rutas no encontradas que estan fuera del layout
     path: "*",
-    element: <Navigate to="/" replace/>
+    element: <NotFoundBase/>
   }
 ])
