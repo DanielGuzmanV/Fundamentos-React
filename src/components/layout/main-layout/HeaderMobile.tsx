@@ -11,7 +11,7 @@ export const HeaderMobile = ({isSubscreen, setIsSidebarOpen, title}: Props) => {
   const navigate = useNavigate();
 
   return (
-    <header className="sm:hidden flex items-center gap-2 p-2 bg-white border-b border-gray-200">
+    <header className="lg:hidden flex items-center gap-2 p-2 bg-white border-b border-gray-200">
       {isSubscreen? (
         <button 
           onClick={() => navigate(-1)} 

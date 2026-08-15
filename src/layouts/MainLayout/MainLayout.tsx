@@ -30,7 +30,7 @@ export const MainLayout = () => {
         />
 
         {/* Header para la versio pc */}
-        <div className='hidden sm:block sticky top-0 z-10 bg-gray-50 px-3 lg:px-6'>
+        <div className='hidden lg:block sticky top-0 z-10 bg-gray-50 px-3 lg:px-6'>
           <HeaderDesktopWeb
             title={title}
             breadcrumbs={breadcrumbs}
@@ -50,7 +50,7 @@ export const MainLayout = () => {
       {/* OVERLAY PARA MÓVIL */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/60 z-40 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}

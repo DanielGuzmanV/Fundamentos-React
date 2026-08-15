@@ -23,7 +23,7 @@ export const SidebarCustom = ({isSiberbarOpen, setIsSiberbarOpen}: Props) => {
     <aside className={`
       fixed inset-y-0 left-0 z-50 w-65 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out
       ${isSiberbarOpen ? 'translate-x-0' : '-translate-x-full'}
-      sm:relative sm:translate-x-0
+      lg:relative lg:translate-x-0
     `}>
       <div className='flex flex-col h-full'>
         {/* Header Sidebar */}
@@ -33,7 +33,7 @@ export const SidebarCustom = ({isSiberbarOpen, setIsSiberbarOpen}: Props) => {
             <span>React Master</span>
           </div>
           {/* Botón cerrar móvil */}
-          <button className="sm:hidden p-2 text-gray-500" onClick={setIsSiberbarOpen}>
+          <button className="lg:hidden p-2 text-gray-500" onClick={setIsSiberbarOpen}>
             <X size={24} />
           </button>
         </div>
