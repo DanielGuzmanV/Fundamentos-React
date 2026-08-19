@@ -1,9 +1,9 @@
-import type React from "react";
-import { VariablesTopic } from "./screens/topics/basic/VariablesTopic";
+import type { ComponentType } from "react";
+import {lazy} from "react";
 
-export const TOPIC_COMPONENTS: Record<string, React.ComponentType> = {
+export const TOPIC_COMPONENTS: Record<string, ComponentType> = {
   // Topics de los conceptos basicos:
-  "jsx": VariablesTopic,
+  "jsx": lazy (() => import("./screens/topics/basic/VariablesTopic").then(m => ({default: m.VariablesTopic})))
 
   // Topics de los conceptos intermedios:
 
