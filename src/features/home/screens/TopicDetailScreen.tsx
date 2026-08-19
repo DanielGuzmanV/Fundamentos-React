@@ -3,6 +3,8 @@ import { CONCEPT_LEVELS_DATA } from "../data/concepts.data";
 import { TOPIC_COMPONENTS } from "../topicMapper";
 import { BookOpen } from "lucide-react";
 import { NotFoundBase } from "../../../pages/NotFoundBase";
+import { Suspense } from "react";
+import { TopicLoader } from "../../../components/common/TopicLoader";
 
 export function TopicDetailScreen() {
   const { categoryId, topicId } = useParams<{categoryId: string; topicId: string}>();
@@ -47,7 +49,9 @@ export function TopicDetailScreen() {
         {/* Renderizado Dinámico del Componente */}
         <section>
           {ComponentToRender ? (
-            <ComponentToRender />
+            <Suspense fallback={<TopicLoader/>}>
+              <ComponentToRender />
+            </Suspense>
           ) : (
             <div className="rounded-xl border border-slate-800/80 bg-slate-900/30 p-8 text-center text-slate-400">
               <p className="font-medium text-slate-300 mb-1">Contenido en construcción 🚧</p>
