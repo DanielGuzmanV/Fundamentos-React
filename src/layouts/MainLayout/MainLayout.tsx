@@ -4,6 +4,7 @@ import { SidebarCustom } from '../../components/layout/main-layout/SidebarCustom
 import { useHeaderNavigation } from '../../hooks/useActiveTitle';
 import { HeaderMobile } from '../../components/layout/main-layout/HeaderMobile';
 import { HeaderDesktopWeb } from '../../components/layout/main-layout/HeaderDesktopWeb';
+import { ScrollToTop } from '../../components/common/ScrollToTop';
 
 export const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,6 +14,8 @@ export const MainLayout = () => {
 
   return (
     <div className="flex h-screen w-full bg-gray-100 overflow-hidden text-slate-900">
+      <ScrollToTop/>
+      
       {/* SIDEBAR */}
       <SidebarCustom 
         isSiberbarOpen={isSidebarOpen} 
