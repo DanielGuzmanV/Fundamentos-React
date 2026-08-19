@@ -1,4 +1,4 @@
-import { ChevronRight} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface BreadcrumbItem {
@@ -26,11 +26,17 @@ export const HeaderDesktopWeb = ({title, breadcrumbs = [], isSubscreen = false}:
               <div key={index} className="flex items-center gap-2">
                 <ChevronRight className="h-4 w-4 text-gray-400" />
                 {isLast || !item.href ? (
-                  <span className="text-xl font-semibold text-gray-900">{item.label}</span>
+                  <span 
+                    className="text-xl font-semibold text-gray-900 truncate max-w-50 lg:max-w-77"
+                    title={item.label}
+                  >
+                    {item.label}
+                  </span>
                 ) : (
                   <Link
                     to={item.href}
-                    className="text-xl font-semibold transition-colors hover:text-indigo-600"
+                    className="truncate max-w-35 lg:max-w-45 text-xl font-semibold transition-colors hover:text-indigo-600"
+                    title={item.label}
                   >
                     {item.label}
                   </Link>
@@ -40,7 +46,7 @@ export const HeaderDesktopWeb = ({title, breadcrumbs = [], isSubscreen = false}:
           })}
         </nav>
       ) : (
-        <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+        <h2 className="text-xl font-bold text-gray-900 truncate">{title}</h2>
       )}
     </header>
   )
