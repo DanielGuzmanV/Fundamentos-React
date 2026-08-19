@@ -1,29 +1,43 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout/MainLayout";
 import { PATHS } from "./paths";
+import { PageLoader } from "../components/common/PageLoader";
 
 // Importaciones de las paginas
-import { HomePage } from "../pages/Home/HomePage";
-import { CryptoHero } from "../pages/Demo-Crypto/Presentation/CryptoHero";
-import { PresentationJob } from "../pages/Demo-JobMatch/Presentation/PresentationJob";
-import { SettingsPage } from "../pages/Settings/OptionsPage";
-import { LoginPage } from "../pages/Login/LoginPage";
-import { ProjectOnePage } from "../pages/ProjectOne/ProjectOnePage";
-import { CryptoApp } from "../pages/Demo-Crypto/Main/CryptoApp";
-import { JobApp } from "../pages/Demo-JobMatch/Main/JobApp";
-import { CryptoLayout } from "../layouts/CryptoLayout/CryptoLayout";
-import { CryptoMarketsPage } from "../pages/Demo-Crypto/Main/CryptoMarketsPage";
-import { CryptoPortfolioPage } from "../pages/Demo-Crypto/Main/CryptoPortfolioPage";
-import { CategoryPage } from "../pages/Home/CategoryPage";
-import { TopicDetailPage } from "../pages/Home/TopicDetailPage";
-import { NotFoundBase } from "../pages/NotFoundBase";
+const HomePage = lazy(() => import("../pages/Home/HomePage").then(m => ({default: m.HomePage})));
+const CategoryPage = lazy(() => import("../pages/Home/CategoryPage").then(m => ({default: m.CategoryPage})));
+const TopicDetailPage = lazy(() => import("../pages/Home/TopicDetailPage").then(m => ({default: m.TopicDetailPage})));
+
+const ProjectOnePage = lazy(() => import("../pages/ProjectOne/ProjectOnePage").then(m => ({default: m.ProjectOnePage})))
+const CryptoHero = lazy(() => import("../pages/Demo-Crypto/Presentation/CryptoHero").then(m => ({ default: m.CryptoHero })));
+const PresentationJob = lazy(() => import("../pages/Demo-JobMatch/Presentation/PresentationJob").then(m => ({ default: m.PresentationJob })));
+const SettingsPage = lazy(() => import("../pages/Settings/OptionsPage").then(m => ({ default: m.SettingsPage })));
+const LoginPage = lazy(() => import("../pages/Login/LoginPage").then(m => ({ default: m.LoginPage })));
+
+const CryptoLayout = lazy(() => import("../layouts/CryptoLayout/CryptoLayout").then(m => ({ default: m.CryptoLayout })));
+const CryptoApp = lazy(() => import("../pages/Demo-Crypto/Main/CryptoApp").then(m => ({ default: m.CryptoApp })));
+const CryptoMarketsPage = lazy(() => import("../pages/Demo-Crypto/Main/CryptoMarketsPage").then(m => ({ default: m.CryptoMarketsPage })));
+const CryptoPortfolioPage = lazy(() => import("../pages/Demo-Crypto/Main/CryptoPortfolioPage").then(m => ({ default: m.CryptoPortfolioPage })));
+const JobApp = lazy(() => import("../pages/Demo-JobMatch/Main/JobApp").then(m => ({ default: m.JobApp })));
+
+const NotFoundBase = lazy(() => import("../pages/NotFoundBase").then(m => ({ default: m.NotFoundBase })));
 
 export const router = createBrowserRouter([
   {
     // Grupo con el layout principal
     path: '/',
-    element: <MainLayout/>,
-    errorElement: <NotFoundBase/>,
+    element: (
+      <Suspense fallback={<PageLoader/>}>
+        <MainLayout/>
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<PageLoader/>}>
+        <NotFoundBase/>,
+      </Suspense>
+    ),
+    
     children: [
       {index: true, element: <HomePage/>},
       {path: PATHS.HOME_CATEGORY, element: <CategoryPage/>},
@@ -39,7 +53,11 @@ export const router = createBrowserRouter([
   // --- Pantallas completas para las demos ---
   {
     path: PATHS.CRYPTO_APP,
-    element: <CryptoLayout/>,
+    element:(
+      <Suspense fallback={<PageLoader/>}>
+        <CryptoLayout/>
+      </Suspense>
+    ), 
     children: [
       {index: true, element: <CryptoApp/>},
       {path: PATHS.CRYPTO_MARKETS, element: <CryptoMarketsPage/>},
@@ -48,19 +66,31 @@ export const router = createBrowserRouter([
   },
   {
     path: PATHS.JOB_MATCH_APP,
-    element: <JobApp/>
+    element: (
+      <Suspense fallback={<PageLoader/>}>
+        <JobApp/>
+      </Suspense>
+    )
   },
 
   {
     // Rutas fuera del layout
     path: PATHS.LOGIN,
-    element: <LoginPage/>,
+    element: (
+      <Suspense fallback={<PageLoader />}>
+        <LoginPage />
+      </Suspense>
+    )
   },
 
   // ----------------------
   {
     // Comodin para rutas no encontradas que estan fuera del layout
     path: "*",
-    element: <NotFoundBase/>
+    element: (
+      <Suspense fallback={<PageLoader />}>
+        <NotFoundBase />
+      </Suspense>
+    ),
   }
 ])
