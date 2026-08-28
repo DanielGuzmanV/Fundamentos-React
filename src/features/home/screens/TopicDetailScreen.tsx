@@ -27,6 +27,7 @@ export function TopicDetailScreen() {
 
   // Componente mapeado
   const ComponentToRender = topicId ? TOPIC_COMPONENTS[topicId] :  null;
+  const ItemIcon = topicData.icon || BookOpen;
 
   return (
     <div className="min-h-screen bg-slate-950 px-4 py-8 text-slate-100 sm:px-6 lg:px-8">
@@ -36,7 +37,7 @@ export function TopicDetailScreen() {
         <section className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
           <div className="flex items-start gap-4">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              <BookOpen className="h-6 w-6" />
+              <ItemIcon className="h-7 w-7" />
             </div>
             <div>
               <h1 className="text-2xl font-extrabold text-white sm:text-3xl">
