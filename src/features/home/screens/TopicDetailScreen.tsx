@@ -19,6 +19,8 @@ export function TopicDetailScreen() {
       <NotFoundBase
         title="Tema no encontrado"
         message="El concepto especificado no existe o la ruta es inválida."
+        linkText={`Volver a ${levelData?.title}`}
+        linkHref={`/learning/${categoryId}`}
       />
     )
   }
