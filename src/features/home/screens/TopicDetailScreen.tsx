@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import { CONCEPT_LEVELS_DATA } from "../data/concepts.data";
-import { TOPIC_COMPONENTS } from "../topicMapper";
+import { TOPIC_COMPONENTS } from "../mappers/topicMapper";
 import { BookOpen } from "lucide-react";
 import { NotFoundBase } from "../../../pages/NotFoundBase";
 import { Suspense } from "react";
 import { TopicLoader } from "../../../components/common/TopicLoader";
+import { NotFoundComponent } from "../../../components/common/NotFoundComponent";
 
 export function TopicDetailScreen() {
   const { categoryId, topicId } = useParams<{categoryId: string; topicId: string}>();
@@ -53,10 +54,7 @@ export function TopicDetailScreen() {
               <ComponentToRender />
             </Suspense>
           ) : (
-            <div className="rounded-xl border border-slate-800/80 bg-slate-900/30 p-8 text-center text-slate-400">
-              <p className="font-medium text-slate-300 mb-1">Contenido en construcción 🚧</p>
-              <p className="text-sm">Próximamente se agregará la explicación detallada para este tema.</p>
-            </div>
+            <NotFoundComponent/>
           )}
         </section>
 
