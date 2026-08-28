@@ -3,7 +3,7 @@ import {lazy} from "react";
 
 export const TOPIC_COMPONENTS: Record<string, ComponentType> = {
   // Topics de los conceptos basicos:
-  "jsx": lazy (() => import("./screens/topics/basic/VariablesTopic").then(m => ({default: m.VariablesTopic})))
+  "jsx": lazy (() => import("../screens/topics/basic/JsxTopic").then(m => ({default: m.JsxTopic})))
 
   // Topics de los conceptos intermedios:
 
