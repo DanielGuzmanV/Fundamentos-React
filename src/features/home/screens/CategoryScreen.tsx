@@ -1,11 +1,11 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { BookOpen } from "lucide-react";
 import { CONCEPT_LEVELS_DATA } from "../data/concepts.data";
 import { NotFoundBase } from "../../../pages/NotFoundBase";
+import { ConceptCardCategory } from "../components/ConceptCardCategory";
 
 export const CategoryScreen = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
-  const navigate = useNavigate();
 
   // Buscamos la categoría según la URL (basic, intermediate, advanced)
   const categoryData = CONCEPT_LEVELS_DATA.find(
@@ -52,33 +52,16 @@ export const CategoryScreen = () => {
           </h2>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {categoryData.items.map((item) => {
-              const ItemIcon = item.icon || BookOpen;
-
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => navigate(`/learning/${categoryId}/${item.id}`)}
-                  className="group flex cursor-pointer items-start justify-between rounded-xl border border-slate-800/80 bg-slate-900/40 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-500/40 hover:bg-slate-900/80 hover:shadow-lg"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 rounded-lg bg-slate-800 p-2 text-indigo-400 transition-colors group-hover:bg-indigo-500/10 group-hover:text-indigo-300">
-                      <ItemIcon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-slate-200 group-hover:text-white">
-                        {item.title}
-                      </h3>
-                      <p className="mt-1 text-xs text-slate-400 line-clamp-2 leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <ArrowRight className="h-5 w-5 shrink-0 text-slate-600 transition-all group-hover:translate-x-1 group-hover:text-indigo-400" />
-                </div>
-              );
-            })}
+            {categoryData.items.map((item) => (
+              <ConceptCardCategory
+                key={item.id}
+                categoryId={categoryId}
+                id={item.id}
+                title={item.title}
+                description={item.description}
+                itemIcon={item.icon}
+              />
+            ))}
           </div>
         </section>
 
