@@ -7,7 +7,7 @@ export const TOPIC_COMPONENTS: Record<string, ComponentType> = {
   "componentes": lazy (() => import("../screens/topics/basic/ComponentsTopic").then(m => ({default: m.ComponentsTopic}))),
   "props": lazy(() => import("../screens/topics/basic/PropsTopic").then(m => ({default: m.PropsTopic}))), 
   "estado": lazy(() => import("../screens/topics/basic/StateTopic").then(m => ({default: m.StateTopic}))),
-  
+  "eventos": lazy(() => import("../screens/topics/basic/EventsTopic").then(m => ({default: m.EventsTopic}))),
   // Topics de los conceptos intermedios:
 
   // Topis de los conceptos avanzados:
