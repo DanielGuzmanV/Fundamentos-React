@@ -1,4 +1,4 @@
-import { MousePointerClick, ShieldCheck, Send, AlertCircle } from "lucide-react";
+import { MousePointerClick, ShieldCheck, AlertCircle } from "lucide-react";
 import { SectionFormEvent } from "../../../components/basics/item_5/SectionFormEvent";
 
 export function EventsTopic() {
