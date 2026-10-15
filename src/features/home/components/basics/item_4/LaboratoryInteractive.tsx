@@ -34,7 +34,7 @@ export const LaboratoryInteractive = ({
               <p className="text-xs font-semibold text-slate-400 mb-1">1. Variable JS (<code className="text-amber-400">let count = 0</code>)</p>
               <p className="text-2xl font-bold text-slate-500 my-2">{localCount}</p>
               <p className="text-[11px] text-slate-400 mb-3">
-                Si presionas, la variable cambia en memoria (mira la consola), pero no fuerza un re-render de la UI.
+                Si presionas, la variable cambia en memoria, pero no fuerza un re-render de la UI.
               </p>
             </div>
             <button
