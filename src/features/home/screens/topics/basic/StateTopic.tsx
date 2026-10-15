@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Database, AlertTriangle } from "lucide-react";
 import { LaboratoryInteractive } from "../../../components/basics/item_4/LaboratoryInteractive";
 import { InternalFunction } from "../../../components/basics/item_4/InternalFunction";
+import { StateCounter } from "../../../components/basics/item_4/StateCounter";
+import { ImmutabilityExample } from "../../../components/basics/item_4/ImmutabilityExample";
 
 export function StateTopic() {
   // Estados para el experimento interactivo
@@ -13,7 +15,7 @@ export function StateTopic() {
 
   const handleLocalIncrement = () => {
     localCount += 1;
-    console.log("localCount cambió a:", localCount); // Cambia en consola, pero la UI no se enterará
+    alert(`localCount cambió en memoria a: ${localCount}`); // Cambia enviando un alert, pero la UI no se enterará
   };
 
   const handleStateIncrement = () => {
@@ -43,6 +45,8 @@ export function StateTopic() {
         handleStateIncrement={handleStateIncrement}
       />
 
+      <StateCounter/>
+
       {/* 3. FUNCIONAMIENTO INTERNO */}
       <InternalFunction/>
 
@@ -64,6 +68,8 @@ setItems(items);
 setItems([...items, "Nuevo"]);`}
         </pre>
       </div>
+
+      <ImmutabilityExample/>
     </div>
   );
 }
