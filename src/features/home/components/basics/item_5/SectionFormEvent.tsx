@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type ChangeEvent, type SyntheticEvent } from "react";
 import { MousePointerClick, Send } from "lucide-react";
 
 export const SectionFormEvent = () => {
@@ -14,7 +14,7 @@ export const SectionFormEvent = () => {
   };
   
   // Evento onSubmit con e.preventDefault()
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault(); // Evita que el navegador recargue la página
 
     // Validacion, verificamos si no esta vacio
@@ -24,6 +24,11 @@ export const SectionFormEvent = () => {
     }
     setSubmittedData(inputValue);
   };
+
+  const handleReset = () => {
+    setInputValue("");
+    setSubmittedData(null);
+  }
 
   // Ejemplo 2: Evento para cambiar el valor del input
   const handleInputText = (e:ChangeEvent<HTMLInputElement>) => {
@@ -54,13 +59,23 @@ export const SectionFormEvent = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full sm:w-auto px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-          >
-            <MousePointerClick className="h-3.5 w-3.5" />
-            Disparar Evento onSubmit
-          </button>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="w-full sm:w-auto px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+            >
+              <MousePointerClick className="h-3.5 w-3.5" />
+              Disparar Evento onSubmit
+            </button>
+
+            <button
+              type="button"
+              onClick={handleReset}
+              className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg transition-colors cursor-pointer"
+            >
+              Limpiar
+            </button>
+          </div>
         </form>
 
         {submittedData && (
